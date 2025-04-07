@@ -83,8 +83,16 @@ export const createPost = async (data: CreateArticleType) => {
         await fs.writeFile(filePath, content);
         console.log(`Fichier créé avec succès : ${filePath}.mdx`);
         await revalidatePostsPage();
+        return {
+            success: true,
+            slug: data.slug || fileName.replace(".mdx", ""),
+        };
     } catch (error) {
         console.error("Erreur lors de la création du fichier:", error);
+        return {
+            success: false,
+            error: error instanceof Error ? error.message : "Erreur inconnue",
+        };
     }
 };
 
