@@ -69,14 +69,17 @@ export const createPost = async (data: CreateArticleType) => {
         // Crée le répertoire si nécessaire
         await fs.mkdir(postDirectory, { recursive: true });
 
-        const content = `---
-title: ${data.title}
-description: ${data.description}
-publishedAt: ${data.publishedAt}
-published: ${data.published}
----
-        ${data.content}`;
-        fs.writeFile(filePath, content);
+        const content = [
+            "---",
+            `title: ${data.title}`,
+            `description: ${data.description}`,
+            `publishedAt: ${data.publishedAt}`,
+            `published: ${data.published}`,
+            "---",
+            "",
+            data.content,
+          ].join("\n");
+        await fs.writeFile(filePath, content);
         console.log(`Fichier créé avec succès : ${filePath}.mdx`);
         await revalidatePostsPage();
     } catch (error) {
