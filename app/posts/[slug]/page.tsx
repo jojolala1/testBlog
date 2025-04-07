@@ -22,6 +22,7 @@ export async function generateMetadata({
         title: post.title,
         description: post.description,
     };
+    
 }
 export async function generateStaticParams() {
     // Récupérer tous les articles
