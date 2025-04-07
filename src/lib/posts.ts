@@ -84,7 +84,6 @@ published: ${data.published}
     }
 };
 
-//const newArticle = await fs.writeFile(`${data.title}.mdx`,)
 
 export const revalidatePostsPage = async () => {
     try {
