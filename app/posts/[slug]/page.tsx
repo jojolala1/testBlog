@@ -1,26 +1,17 @@
 import { Mdx } from "@/features/mdx/Mdx";
-import { getPost } from "@/lib/posts";
+import { getPost, getPosts, Post } from "@/lib/posts";
 import { notFound } from "next/navigation";
 
 export const dynamic = "force-static";
 
-export const generateMetadata = async ({
-    params
-}: {params: Promise<{slug: string}>}) => {
-    const { slug } = await params;
+export async function generateStaticParams() {
+    // Récupérer tous les articles
+    const posts: Post[] = await getPosts();
 
-    const post = await getPost(slug);
-    if (!post) {
-        return {
-            title: "404",
-            description: "Page non trouvée",
-        };
-    }
-    return {
-        title: post.title,
-        description: post.description,
-    };
-};
+    return posts.map((post) => ({
+        slug: post.slug, // Génère un slug pour chaque article
+    }));
+}
 
 export default async function RoutePage({
     params,
