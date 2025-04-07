@@ -1,0 +1,16 @@
+---
+title: je vous presente mon blog qui parle de developpement web 
+description: "je t'explique comment fonctionne mon blog en quelques etapes. C'est vraimnet trop cool la vie."
+publishedAt: "2024-08-19"
+published: true
+---
+
+salut voici le contenu de mon blog 
+
+## Et comment le faire chez toi ?
+
+Tu peux lire cet article : 
+
+<Youtube id='XpD553fmO9o'/>
+
+texte suivant 
