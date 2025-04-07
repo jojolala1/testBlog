@@ -36,8 +36,10 @@ export default function Home() {
     async function onSubmit  (values: CreateArticleType) {
         // Do something with the form values.
         // ✅ This will be type-safe and validated.
+        const res = await createPost(values)
         console.log(values);
-        await createPost(values)
+        console.log(res)
+
     }
     useEffect(()=>{
         const handleGetPosts = async ()=>{
