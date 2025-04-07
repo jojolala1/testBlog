@@ -6,7 +6,7 @@ import { revalidatePath } from "next/cache";
 import path from "path";
 import { z } from "zod";
 
-const postDirectory = path.join(process.cwd(), "content");
+const postDirectory = path.join(process.cwd(), "./content");
 
 const PostSchema = z.object({
     title: z.string().min(5).max(65),
