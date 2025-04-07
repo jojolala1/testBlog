@@ -22,7 +22,7 @@ export async function generateMetadata({
         title: post.title,
         description: post.description,
     };
-    
+
 }
 export async function generateStaticParams() {
     // Récupérer tous les articles
@@ -41,6 +41,7 @@ export default async function RoutePage({
     const { slug } = await params;
 
     const post = await getPost(slug);
+    console.log('post : ', post);
 
     if (!post) {
         return notFound();

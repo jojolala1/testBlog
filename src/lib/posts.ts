@@ -67,6 +67,7 @@ export const createPost = async (data: CreateArticleType) => {
     const filePath = path.join(postDirectory, fileName);
     try {
         // Crée le répertoire si nécessaire
+        console.log('creation ..')
         await fs.mkdir(postDirectory, { recursive: true });
 
         const content = [
