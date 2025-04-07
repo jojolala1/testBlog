@@ -6,31 +6,14 @@ import { Input } from "@/components/ui/input";
 import { Switch } from "@/components/ui/switch";
 import { Textarea } from "@/components/ui/textarea";
 import { createPost, getPosts, Post } from "@/lib/posts";
+import { CreateArticleSchema, CreateArticleType } from "@/types";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useEffect, useState } from "react";
 import { FormProvider, useForm } from "react-hook-form";
-import { z } from "zod";
 
 
 
-export const CreateArticleSchema = z.object({
-    title: z.string().min(3, {
-        message: "il faut au minimum 3 caracteres",
-    }),
-    
-    description: z.string().min(3, {
-        message: "il faut au minimum 3 caracteres",
-    }),
-    content: z.string().min(10, {
-        message: "il faut au minimum 10 caracteres",
-    }),
-    
-    published: z.boolean(),
-    publishedAt: z.date(),
-    slug:z.string(),
-});
 
-export type CreateArticleType = z.infer<typeof CreateArticleSchema>;
 
 export default function Home() {
 

@@ -1,5 +1,5 @@
+import { CreateArticleType } from '@/types';
 import Link from 'next/link';
-import { CreateArticleType } from '../../app/page';
 import { Card, CardDescription, CardFooter, CardHeader, CardTitle } from './ui/card';
 
 
