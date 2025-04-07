@@ -1,10 +1,10 @@
 "use server";
+import { CreateArticleType } from "@/types";
 import fs from "fs/promises";
 import matter from "gray-matter";
 import { revalidatePath } from "next/cache";
 import path from "path";
 import { z } from "zod";
-import { CreateArticleType } from "../../app/page";
 
 const postDirectory = path.join(process.cwd(), "content");
 
