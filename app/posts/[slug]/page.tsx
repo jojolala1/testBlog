@@ -4,8 +4,14 @@ import { notFound } from "next/navigation";
 
 export const dynamic = "force-static";
 
-export async function generateMetadata({ params }: { params: { slug: string } }) {
-    const post = await getPost(params.slug);
+export async function generateMetadata({
+    params,
+}: {
+    params: Promise<{ slug: string }>;
+}) {
+    const { slug } = await params;
+
+    const post = await getPost(slug);
     if (!post) {
         return {
             title: "404",
@@ -17,7 +23,6 @@ export async function generateMetadata({ params }: { params: { slug: string } })
         description: post.description,
     };
 }
-
 export async function generateStaticParams() {
     // Récupérer tous les articles
     const posts: Post[] = await getPosts();
@@ -30,9 +35,9 @@ export async function generateStaticParams() {
 export default async function RoutePage({
     params,
 }: {
-    params: { slug: string };
+    params: Promise<{ slug: string }>;
 }) {
-    const { slug } = params;
+    const { slug } = await params;
 
     const post = await getPost(slug);
 
